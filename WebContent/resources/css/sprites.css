@@ -1,0 +1,98 @@
+.profile, .admin_button, .trash, .favourite, .admin_table .delete, .admin_table .insert, .success {
+	background-image: url(../images/sprites.png);
+	background-repeat: no-repeat;
+}
+
+.profile {
+	position: absolute;
+	right: 25px;
+	top: 10px;
+	background-position: -100px -199px ;
+	width: 30px;
+	height: 30px;	
+}
+
+.profile.logged_in {
+	background-position: -33px -199px ;
+}
+
+.profile.logged_out{
+	background-position: 0 -199px ;	
+}
+
+.admin_button {
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	height: 10px;
+	width: 10px;
+}
+
+.admin_button {
+	background-position: -47px -132px ;
+}
+
+.admin_button:hover {
+	background-position: -47px -142px ;
+}
+
+.trash {
+	margin: 30px 0 30px 0;
+	padding-top: 20px;
+	background-position: 0 0;	
+	width: 60px;
+	height: 60px;
+}
+
+.trash:hover {
+	background-position: 0 -61px ;
+}
+
+.favourite {
+	background-position: 0 -154px ;
+	width: 20px;
+	height: 20px;
+}
+
+.favourite:hover {
+	background-position: -21px -154px ;
+}
+
+.movie_list li {
+	position: relative;
+}
+
+.movie_list li .add_remove {
+	position: absolute;
+	top: 10px;
+	right: 30px;
+}
+
+.admin_table .delete {
+	background-position: 0 -130px ;
+	margin-left: 40px;
+	width: 20px;
+	height: 20px;
+}
+
+.admin_table .delete:hover {
+	background-position: -21px -130px;
+}
+
+.insert{
+	background-position: 0 -177px;
+	margin-left: 40px;	
+	width: 20px;
+	height: 20px;
+}
+
+.insert:hover {
+	background-position: -21px -177px;
+}
+
+.admin_table .success {
+	background-position: -42px -177px;
+	margin-left: 40px;
+	width: 40px;
+	height: 20px;
+}

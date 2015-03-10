@@ -1,0 +1,48 @@
+* {
+   font-family: sans-serif;
+   font-size: 16px;
+}
+
+header {
+   height: 50px;
+   border-bottom: 1px solid gray;
+   background-color: #F1F1F1;
+}
+
+header h1 {
+   font-size: 1.5em;
+   font-weight: bold;
+   margin-left: 50px;
+   line-height: 50px;
+}
+
+.welcome {
+	font-size: 0.8em;
+	text-align: justify;
+	padding: 10px 10px 20px 10px;
+	border-bottom: 1px dotted gray;
+}
+
+footer {
+	clear: both;
+	height: 20px;
+	border-top: 1px dotted gray;
+	border-bottom: 1px dotted gray;
+	margin-top: 10px;
+}
+
+footer p {
+	line-height: 20px;
+	margin-left: 50px;
+	font-size: 0.7em;
+	font-weight: bold;
+}
+
+footer a {
+	font-size: inherit;
+	color: black;
+}
+
+footer a:hover {
+	color: #A32824;
+}

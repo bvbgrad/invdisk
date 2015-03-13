@@ -1,8 +1,7 @@
 ﻿Phase 0 Prerequisites
 1. Tomcat server installed and available as a “Server” configuration.
 2. Line 2
-
-
+3. line 3
 
 Phase 1 Minimum dynamic spring web project (Spring tutorial #50 – 54) as follows:
 Clone copy of this MVC dynamic web app creation guide.  Delete all but Phases 1 and 2.  Global replace  'inv01' to the new project name.

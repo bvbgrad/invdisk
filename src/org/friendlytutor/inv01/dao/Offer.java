@@ -1,9 +1,18 @@
 package org.friendlytutor.inv01.dao;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="offers")
 public class Offer {
 
+	@Id
+	@GeneratedValue
 	private int id;
+	
 	private String name;
 	private String email;
 	private String text;

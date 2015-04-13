@@ -14,7 +14,7 @@
 	</bean>
 
 	<context:component-scan
-		base-package="org.friendlytutor.inv01.contollers">
+		base-package="org.friendlytutor.inv01.controllers">
 	</context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
 	

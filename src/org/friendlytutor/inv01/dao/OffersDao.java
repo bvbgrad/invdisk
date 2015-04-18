@@ -1,7 +1,11 @@
 
 package org.friendlytutor.inv01.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -9,6 +13,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +24,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Component("offersDao")
 public class OffersDao {
 
+	private NamedParameterJdbcTemplate jdbc;
+	
+	@Autowired
+	public void setDataSource(DataSource jdbc) {
+		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
+	}
+
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -52,5 +66,23 @@ public class OffersDao {
 
 		return (Offer)crit.uniqueResult();
 	}
+	
+	public List<Offer> checkData() {
+		System.out.println("OffersDao.checkData");
+		return jdbc.query("select * from offers", new RowMapper<Offer>() {
+
+			public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Offer offer = new Offer();
+
+				offer.setId(rs.getInt("id"));
+				offer.setName(rs.getString("name"));
+				offer.setText(rs.getString("text"));
+				offer.setEmail(rs.getString("email"));
+
+				return offer;
+			}
+		});
+	}
+
 
 }

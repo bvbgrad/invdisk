@@ -24,20 +24,21 @@
 		<h1>Friendly-Tutor(TM) Inventory Project</h1>
 	</header>
 	
-	<div class="profile logged_out"></div>
 	<div class="admin_button"></div>
+	<div class="profile logged_out"></div>
 
 	<section>
 	
 		<p class="welcome">Welcome to the Inventory program.</p>
 		
+		<div class="data">
 		<c:forEach var="row" items="${offers}">
 			ID: ${row.id}<br/>
 			Name: ${row.name}<br/>
 			Email: ${row.email}<br/>
 			Text: ${row.text}<br/>
 		</c:forEach>
-		
+		</div>
 	
 	</section>
 

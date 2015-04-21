@@ -23,6 +23,11 @@ header h1 {
 	border-bottom: 1px dotted gray;
 }
 
+.data {
+	margin-left: 10px;
+	color: blue;
+}
+
 footer {
 	clear: both;
 	height: 40px;

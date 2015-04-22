@@ -9,13 +9,9 @@
 
 
 	<context:annotation-config></context:annotation-config>
-	<context:component-scan base-package="org.friendlytutor.inv01.dao">
+		<context:component-scan base-package="org.friendlytutor.inv01.dao">
 	</context:component-scan>
 
-	<beans profile="production">
-		<jee:jndi-lookup jndi-name="jdbc/inv01" id="dataSource"
-			expected-type="javax.sql.DataSource">
-		</jee:jndi-lookup>
 		<bean id="sessionFactory"
 			class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 			<property name="dataSource" ref="dataSource"></property>
@@ -30,10 +26,16 @@
 				</list>
 			</property>
 		</bean>
+
+	<beans profile="production">
+		<jee:jndi-lookup jndi-name="jdbc/inv01" id="dataSource"
+			expected-type="javax.sql.DataSource">
+		</jee:jndi-lookup>
 		<bean id="transactionManager"
 			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 			<property name="dataSource" ref="dataSource"></property>
 		</bean>
+
 		<tx:annotation-driven />
 
 		<bean id="exceptionTranslator"

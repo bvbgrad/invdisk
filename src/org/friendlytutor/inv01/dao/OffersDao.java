@@ -66,7 +66,9 @@ public class OffersDao {
 
 		return (Offer)crit.uniqueResult();
 	}
-	
+
+// TODO Remove this method?  
+// The rest of the class methods are hibernate enabled, except for this method
 	public List<Offer> checkData() {
 		System.out.println("OffersDao.checkData");
 		return jdbc.query("select * from offers", new RowMapper<Offer>() {
@@ -75,9 +77,8 @@ public class OffersDao {
 				Offer offer = new Offer();
 
 				offer.setId(rs.getInt("id"));
-				offer.setName(rs.getString("name"));
+				offer.setUsername(rs.getString("username"));
 				offer.setText(rs.getString("text"));
-				offer.setEmail(rs.getString("email"));
 
 				return offer;
 			}

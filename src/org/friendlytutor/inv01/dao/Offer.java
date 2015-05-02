@@ -13,30 +13,27 @@ public class Offer {
 	@GeneratedValue
 	private int id;
 	
-	private String name;
-	private String email;
+	private String username;
 	private String text;
 	
 	public Offer() {
 	}
 
-	public Offer(int id, String name, String email, String text) {
+	public Offer(int id, String username, String text) {
 		this.id = id;
-		this.name = name;
-		this.email = email;
+		this.username = username;
 		this.text = text;
 	}
 
-	public Offer(String name, String email, String text) {
-		this.name = name;
-		this.email = email;
+	public Offer(String username, String text) {
+		this.username = username;
 		this.text = text;
 	}
 
 	@Override
 	public String toString() {
-		return "Offer [id=" + id + ", name=" + name + ", email=" + email
-				+ ", text=" + text + "]";
+		return "Offer [id=" + id + ", username=" + username + 
+				", email=" + text + "]";
 	}
 
 	public int getId() {
@@ -47,20 +44,13 @@ public class Offer {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getText() {
@@ -75,10 +65,9 @@ public class Offer {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -91,24 +80,18 @@ public class Offer {
 		if (getClass() != obj.getClass())
 			return false;
 		Offer other = (Offer) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
 		if (text == null) {
 			if (other.text != null)
 				return false;
 		} else if (!text.equals(other.text))
 			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
 	}
+
 	
 }

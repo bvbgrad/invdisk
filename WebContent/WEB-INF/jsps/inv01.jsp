@@ -34,8 +34,7 @@
 		<div class="data">
 		<c:forEach var="row" items="${offers}">
 			ID: ${row.id}<br/>
-			Name: ${row.name}<br/>
-			Email: ${row.email}<br/>
+			Name: ${row.username}<br/>
 			Text: ${row.text}<br/>
 		</c:forEach>
 		</div>

@@ -1,39 +1,28 @@
 package org.friendlytutor.inv01.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="offers")
 public class Offer {
-
-	@Id
-	@GeneratedValue
 	private int id;
 	
+//	@Size(min=5, max=100)
 	private String username;
+	
+//	@Size(min=5, max=255)
 	private String text;
 	
-	public Offer() {
-	}
-
-	public Offer(int id, String username, String text) {
-		this.id = id;
-		this.username = username;
-		this.text = text;
+	public Offer() {		
 	}
 
 	public Offer(String username, String text) {
 		this.username = username;
 		this.text = text;
 	}
-
-	@Override
-	public String toString() {
-		return "Offer [id=" + id + ", username=" + username + 
-				", email=" + text + "]";
+	
+	public Offer(int id, String username, String text) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.text = text;
 	}
 
 	public int getId() {
@@ -43,7 +32,6 @@ public class Offer {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getUsername() {
 		return username;
@@ -59,6 +47,12 @@ public class Offer {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	@Override
+	public String toString() {
+		return "Offer [id=" + id + ", username=" + username + ", text=" + text
+				+ "]";
 	}
 
 	@Override
@@ -93,5 +87,4 @@ public class Offer {
 		return true;
 	}
 
-	
 }

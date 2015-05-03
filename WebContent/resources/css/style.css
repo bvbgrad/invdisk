@@ -16,6 +16,16 @@ header h1 {
    line-height: 50px;
 }
 
+p.loginerror {
+	color: red;
+}
+
+.formtable {
+	width: 400px;
+	padding: 10px;
+	border: 1px solid blue;
+}
+
 .welcome {
 	font-size: 0.8em;
 	text-align: justify;

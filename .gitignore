@@ -16,8 +16,8 @@ tmp/**/*
 *.swp
 *~.nib
 local.properties
-.classpath
-.settings/
+#.classpath
+#.settings/
 .loadpath
 
 # Locally stored "Eclipse launch configurations"

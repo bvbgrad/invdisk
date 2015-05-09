@@ -24,19 +24,32 @@
 		<h1>Friendly-Tutor(TM) Inventory Project</h1>
 	</header>
 	
+	<div class="profile logged_in"></div>
 	<div class="admin_button"></div>
-	<div class="profile logged_out"></div>
+	<div class="right">
+      	${username}
+      	<form name='f' action='${pageContext.request.contextPath}/logout' method='POST'>
+         	<input  class="right" name="submit" type="submit" value="Logout" />
+         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		</form>
+   	</div>
+	
 
 	<section>
 	
 		<p class="welcome">Welcome to the Inventory program.</p>
 		
 		<div class="data">
-		<c:forEach var="row" items="${offers}">
-			ID: ${row.id}<br/>
-			Name: ${row.username}<br/>
-			Text: ${row.text}<br/>
-		</c:forEach>
+			<c:forEach var="row" items="${offers}">
+				Offer ID: ${row.id} from Name: ${row.username}<br/>
+				   Text: ${row.text}<br/>
+			</c:forEach>
+	
+			<br><p> All users </p>
+			<c:forEach var="row" items="${users}">
+				Username: ${row.username} Enabled: ${row.enabled}<br/>
+				   Name: ${row.name} Email: ${row.email}<br/>
+			</c:forEach>
 		</div>
 	
 	</section>
@@ -49,12 +62,7 @@
          <br>   Under Construction (as of <%= new java.util.Date() %>)
          </p>
          
-       	<form name='f' action='${pageContext.request.contextPath}/logout' method='POST'>
-         	<input name="submit" type="submit" value="Logout" />
-         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		</form>
-         	
-	</footer>
+ 	</footer>
 
 </body>
 </html>

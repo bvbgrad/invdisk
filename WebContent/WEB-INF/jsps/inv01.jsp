@@ -48,6 +48,12 @@
          for more information.
          <br>   Under Construction (as of <%= new java.util.Date() %>)
          </p>
+         
+       	<form name='f' action='${pageContext.request.contextPath}/logout' method='POST'>
+         	<input name="submit" type="submit" value="Logout" />
+         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		</form>
+         	
 	</footer>
 
 </body>

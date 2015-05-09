@@ -23,9 +23,12 @@
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/static/**" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
+		<security:intercept-url pattern="/logout" access="permitAll" />
 		<security:intercept-url pattern="/" access="isAuthenticated()" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" />
+		<security:csrf />
+		<security:logout logout-url="/logout" />
 	</security:http>
 </beans>

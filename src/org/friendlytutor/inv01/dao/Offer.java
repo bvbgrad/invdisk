@@ -1,13 +1,15 @@
 package org.friendlytutor.inv01.dao;
 
+import javax.validation.constraints.Size;
+
 
 public class Offer {
 	private int id;
 	
-//	@Size(min=5, max=100)
+	@Size(min=5, max=100)
 	private String username;
 	
-//	@Size(min=5, max=255)
+	@Size(min=5, max=255)
 	private String text;
 	
 	public Offer() {		

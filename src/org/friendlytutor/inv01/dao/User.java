@@ -1,20 +1,30 @@
 package org.friendlytutor.inv01.dao;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class User {
 	
-//	@NotBlank
-//	@Size(min=8, max=15)
-//	@Pattern(regexp="^\\w{8,}$")
+	@NotBlank
+	@Size(min=3, max=15)
+	@Pattern(regexp="^\\w{3,}$")
 	private String username;
 	
-//	@NotBlank
-//	@Pattern(regexp="^\\S+$")
-//	@Size(min=8, max=15)
+	@NotBlank
+	@Pattern(regexp="^\\S+$")
+	@Size(min=8, max=15)
 	private String password;
 	
+	@NotBlank
+	@Size(min=5, max=50)
+	@Pattern(regexp="^\\w{5,}$")
 	private String name;
 	
-//	@ValidEmail
+	@NotBlank
+	@Email
 	private String email;
 	
 	private boolean enabled = false;
@@ -22,12 +32,10 @@ public class User {
 	
 	
 	public User() {
-		
 	}
 
 	public User(String username, String password, String name, String email,
 			boolean enabled, String authority) {
-		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;

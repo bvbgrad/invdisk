@@ -43,6 +43,16 @@ p.loginerror {
 	color: blue;
 }
 
+.valid {
+	font-size: .7em;
+	color: green;	
+}
+
+.error {
+	font-size: .7em;
+	color: red;	
+}
+
 footer {
 	clear: both;
 	height: 40px;

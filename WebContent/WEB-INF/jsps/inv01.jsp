@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 
@@ -25,7 +25,9 @@
 	</header>
 	
 	<div class="profile logged_in"></div>
+	
 	<div class="admin_button"></div>
+	
 	<div class="right">
       	${username}
       	<form name='f' action='${pageContext.request.contextPath}/logout' method='POST'>
@@ -33,8 +35,6 @@
          	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</form>
    	</div>
-	
-
 	<section>
 	
 		<p class="welcome">Welcome to the Inventory program.</p>
@@ -44,16 +44,13 @@
 				Offer ID: ${row.id} from Name: ${row.username}<br/>
 				   Text: ${row.text}<br/>
 			</c:forEach>
-	
-			<br><p> All users </p>
-			<c:forEach var="row" items="${users}">
-				Username: ${row.username} Enabled: ${row.enabled}<br/>
-				   Name: ${row.name} Email: ${row.email}<br/>
-			</c:forEach>
 		</div>
 	
 	</section>
 
+	<sec:authorize access="hasRole('ADMIN')">
+		<br/><p><a href="<c:url value="/admin"/>">User Accounts Administration</a></p>
+	</sec:authorize>
 
 	<footer>
         <p>Friendly-Tutor(TM) Inventory project: Contact

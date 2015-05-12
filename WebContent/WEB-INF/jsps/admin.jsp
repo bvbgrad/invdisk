@@ -20,15 +20,27 @@
 </head>
 
 <body>
-		<div class="data">
-			<p> All users </p>
-			<c:forEach var="row" items="${users}">
-				Username: ${row.username} Role: ${row.authority}<br/>
-				   Name: ${row.name} Email: ${row.email} Enabled: ${row.enabled}<br/><br/>
-			</c:forEach>
-		</div>
-		
-			<p><a href="<c:url value="/"/>">Home page</a></p>
+	<table>
+		<caption>All users</caption>
+		<tr>
+			<th>Username</th>
+			<th>Role</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Enabled</th>
+		</tr>
+		<c:forEach var="row" items="${users}">
+			<tr>
+				<td>${row.username}</td>
+				<td>${row.authority}</td>
+				<td>${row.name}</td>
+				<td>${row.email}</td>
+				<td>${row.enabled}</td>
+			</tr>
+		</c:forEach>
+		</table>
+				
+	<p><a href="<c:url value="/"/>">Home page</a></p>
 		
 </body>
 </html>

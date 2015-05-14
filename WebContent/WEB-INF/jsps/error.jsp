@@ -12,5 +12,6 @@
 	<p/>
 	Database exception error
 
+			<p><a href="<c:url value="/"/>">Home page</a></p>
 </body>
 </html>

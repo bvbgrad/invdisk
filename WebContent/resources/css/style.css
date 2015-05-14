@@ -9,6 +9,11 @@ header {
    background-color: #F1F1F1;
 }
 
+.right {
+	position: absolute;
+   right: 0px;
+}
+
 header h1 {
    font-size: 1.5em;
    font-weight: bold;
@@ -16,11 +21,58 @@ header h1 {
    line-height: 50px;
 }
 
+p.loginerror {
+	color: red;
+}
+
+.formtable {
+	width: 400px;
+	padding: 10px;
+	border: 1px solid blue;
+}
+
 .welcome {
-	font-size: 0.8em;
+	font-size: 1.2em;
 	text-align: justify;
 	padding: 10px 10px 20px 10px;
 	border-bottom: 1px dotted gray;
+}
+
+.data {
+	margin-left: 10px;
+	color: blue;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table tr:nth-child(odd) {
+   background-color:#fff;
+}
+
+table th	{
+    background-color: black;
+    color: white;
+}
+
+.valid {
+	font-size: .7em;
+	color: green;	
+}
+
+.error {
+	font-size: .7em;
+	color: red;	
 }
 
 footer {

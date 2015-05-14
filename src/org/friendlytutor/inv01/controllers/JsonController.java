@@ -25,16 +25,6 @@ public class JsonController {
 	@Autowired
 	private OffersDao offersDao;  // if use DAO directly
 
-	@RequestMapping(value="/check")
-	public List<Offer> checkOffers() {
-		List<Offer> offers = new ArrayList<Offer>();
-		offers = offersDao.checkData();
-		for (Offer offer : offers) {
-			System.out.println(offer);
-		}
-		return offers;
-	}
-	
 	@RequestMapping(value="/error")
 	public Offer checkError(HttpServletRequest req) {
 		String sId = req.getParameter("id");

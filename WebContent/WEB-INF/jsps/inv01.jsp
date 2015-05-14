@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 
@@ -24,23 +24,33 @@
 		<h1>Friendly-Tutor(TM) Inventory Project</h1>
 	</header>
 	
-	<div class="profile logged_out"></div>
+	<div class="profile logged_in"></div>
+	
 	<div class="admin_button"></div>
-
+	
+	<div class="right">
+      	${username}
+      	<form name='f' action='${pageContext.request.contextPath}/logout' method='POST'>
+         	<input  class="right" name="submit" type="submit" value="Logout" />
+         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		</form>
+   	</div>
 	<section>
 	
 		<p class="welcome">Welcome to the Inventory program.</p>
 		
-		<c:forEach var="row" items="${offers}">
-			ID: ${row.id}<br/>
-			Name: ${row.name}<br/>
-			Email: ${row.email}<br/>
-			Text: ${row.text}<br/>
-		</c:forEach>
-		
+		<div class="data">
+			<c:forEach var="row" items="${offers}">
+				Offer ID: ${row.id} from Name: ${row.username}<br/>
+				   Text: ${row.text}<br/>
+			</c:forEach>
+		</div>
 	
 	</section>
 
+	<sec:authorize access="hasRole('ADMIN')">
+		<br/><p><a href="<c:url value="/admin"/>">User Accounts Administration</a></p>
+	</sec:authorize>
 
 	<footer>
         <p>Friendly-Tutor(TM) Inventory project: Contact
@@ -48,7 +58,8 @@
          for more information.
          <br>   Under Construction (as of <%= new java.util.Date() %>)
          </p>
-	</footer>
+         
+ 	</footer>
 
 </body>
 </html>

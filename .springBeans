@@ -9,6 +9,8 @@
 	<configs>
 		<config>WebContent/WEB-INF/inv01-servlet.xml</config>
 		<config>src/org/friendlytutor/inv01/config/dao-context.xml</config>
+		<config>test/org/friendlytutor/inv01/test/config/datasource.xml</config>
+		<config>src/org/friendlytutor/inv01/config/security-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

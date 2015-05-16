@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html>
@@ -12,6 +13,6 @@
 	<p/>
 	Database exception error
 
-			<p><a href="<c:url value="/"/>">Home page</a></p>
+	<p><a href="<c:url value="/"/>">Home page</a></p>
 </body>
 </html>

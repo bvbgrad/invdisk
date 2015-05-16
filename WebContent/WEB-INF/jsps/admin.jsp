@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<table>
+	<table class="datatable">
 		<caption>All users</caption>
 		<tr>
 			<th>Username</th>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,7 @@ public class UsersDao {
 	private NamedParameterJdbcTemplate jdbc;
 	
 //	@Autowired
-//	private PasswordEncoder passwordEncoder;
+	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Autowired
 	public void setDataSource(DataSource jdbc) {
@@ -27,10 +28,11 @@ public class UsersDao {
 	@Transactional
 	public boolean create(User user) {
 		
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		
 		params.addValue("username", user.getUsername());
-//		params.addValue("password", passwordEncoder.encode(user.getPassword()));
 		params.addValue("password", user.getPassword());
 		params.addValue("name", user.getName());
 		params.addValue("email", user.getEmail());

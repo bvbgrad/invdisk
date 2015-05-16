@@ -25,12 +25,6 @@ p.loginerror {
 	color: red;
 }
 
-.formtable {
-	width: 400px;
-	padding: 10px;
-	border: 1px solid blue;
-}
-
 .welcome {
 	font-size: 1.2em;
 	text-align: justify;
@@ -43,7 +37,7 @@ p.loginerror {
 	color: blue;
 }
 
-table, th, td {
+.datatable, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -52,17 +46,24 @@ th, td {
     text-align: left;
 }
 
-table tr:nth-child(even) {
+.datatable tr:nth-child(even) {
     background-color: #eee;
 }
 
-table tr:nth-child(odd) {
+.datatable tr:nth-child(odd) {
    background-color:#fff;
 }
 
 table th	{
     background-color: black;
     color: white;
+}
+
+.formtable {
+	background-color:#fff;
+	width: 400px;
+	padding: 10px;
+	border: 1px solid blue;
 }
 
 .valid {

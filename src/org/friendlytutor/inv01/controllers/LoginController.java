@@ -61,7 +61,7 @@ public class LoginController {
 		}
 		
 		user.setEnabled(true);
-		user.setAuthority("USER");
+		user.setAuthority("ROLE_USER");
 		System.out.println("Create account for: " + user);
 		
 		if (usersDao.exists(user.getUsername())) {

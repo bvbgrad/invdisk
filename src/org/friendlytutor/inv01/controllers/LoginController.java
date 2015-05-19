@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.friendlytutor.inv01.dao.User;
 import org.friendlytutor.inv01.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LoginController {
+	
+	private Logger logger = Logger.getLogger(LoginController.class);
 	
 	private UsersDao usersDao;
 	@Autowired
@@ -37,6 +40,8 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public String showLogin() {
+        logger.info("This is an info log entry");
+        logger.error("This is an error log entry");
 		return "login";
 	}
 	

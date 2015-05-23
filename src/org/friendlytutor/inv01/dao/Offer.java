@@ -1,29 +1,42 @@
 package org.friendlytutor.inv01.dao;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-
+@Entity
+@Table(name="offers")
 public class Offer {
+
+	@Id
+	@GeneratedValue
 	private int id;
 	
-	@Size(min=5, max=100)
-	private String username;
-	
-	@Size(min=5, max=255)
+	@Size(min=5, max=255, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Column(name="text")
 	private String text;
 	
-	public Offer() {		
+	@ManyToOne
+	@JoinColumn(name="username")
+	private User user;
+	
+	public Offer() {
+		this.user = new User();
 	}
 
-	public Offer(String username, String text) {
-		this.username = username;
+	public Offer(User user, String text) {
+		this.user = user;
 		this.text = text;
 	}
-	
-	public Offer(int id, String username, String text) {
-		super();
+
+	public Offer(int id, User user, String text) {
 		this.id = id;
-		this.username = username;
+		this.user = user;
 		this.text = text;
 	}
 
@@ -35,14 +48,6 @@ public class Offer {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public String getText() {
 		return text;
 	}
@@ -51,10 +56,16 @@ public class Offer {
 		this.text = text;
 	}
 
-	@Override
-	public String toString() {
-		return "Offer [id=" + id + ", username=" + username + ", text=" + text
-				+ "]";
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public String getUsername() {
+		return user.getUsername();
 	}
 
 	@Override
@@ -62,8 +73,7 @@ public class Offer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
-		result = prime * result
-				+ ((username == null) ? 0 : username.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -81,12 +91,21 @@ public class Offer {
 				return false;
 		} else if (!text.equals(other.text))
 			return false;
-		if (username == null) {
-			if (other.username != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!username.equals(other.username))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Offer [id=" + id + ", text=" + text + ", user=" + user + "]";
+	}
+
+
+	
+	
 
 }

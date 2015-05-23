@@ -30,6 +30,15 @@ public class UserDaoTests {
 	@Autowired
 	private DataSource dataSource;
 	
+	private User user1 =
+			new User("user01", "password", "brent", "user@email.com", true, "ADMIN");
+	private User user2 =
+			new User("user02", "password", "brent", "user@email.com", true, "ADMIN");
+	private User user3 =
+			new User("user03", "password", "brent", "user@email.com", true, "ADMIN");
+	private User user4 =
+			new User("user04", "password", "brent", "user@email.com", true, "ADMIN");
+	
 	@Before
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
@@ -38,11 +47,31 @@ public class UserDaoTests {
 		jdbc.execute("delete from users");	
 	}
 	
+	
+	
+	@Test
+	public void testCreateRetrieve() {
+		usersDao.create(user1);
+		List<User> users = usersDao.getAllUsers();
+		assertEquals("One user should have been created and retrieved",
+			1, users.size());
+		assertEquals("Inserted user should match retrieved user",
+			user1, users.get(0));
+		
+		usersDao.create(user2);
+		usersDao.create(user3);
+		usersDao.create(user4);
+		users = usersDao.getAllUsers();
+		assertEquals("Four users should have been created and retrieved",
+				4, users.size());
+		
+	}
+	
 	@Test
 	public void testCreateUser() {
-		User user = new User("user01", "password", "brent", "user email", true, "ADMIN");
+		User user = new User("user01", "password", "brent", "user@email.com", true, "ADMIN");
 		
-		assertTrue("User creation should return true", usersDao.create(user));
+		usersDao.create(user);
 		
 		List<User> users = usersDao.getAllUsers();
 		

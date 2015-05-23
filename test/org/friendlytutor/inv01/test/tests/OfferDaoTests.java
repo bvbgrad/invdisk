@@ -48,7 +48,7 @@ public class OfferDaoTests {
 	
 	@Test
 	public void testCreateOffer() {
-		User user = new User("user01", "password", "brent", "user email", true, "ADMIN");
+		User user = new User("user01", "password", "brent", "user@email.com", true, "ADMIN");
 		usersDao.create(user);
 		
 		Offer offer = new Offer("user01", "This is a test offer.");

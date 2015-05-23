@@ -31,23 +31,20 @@ public class UserDaoTests {
 	private DataSource dataSource;
 	
 	private User user1 =
-			new User("user01", "password", "brent", "user@email.com", true, "ADMIN");
+			new User("user01", "password", "brent", "user@email.com", true, "ROLE_ADMIN");
 	private User user2 =
-			new User("user02", "password", "brent", "user@email.com", true, "ADMIN");
+			new User("user02", "password", "brent", "user@email.com", true, "ROLE_USER");
 	private User user3 =
-			new User("user03", "password", "brent", "user@email.com", true, "ADMIN");
+			new User("user03", "password", "brent", "user@email.com", true, "");
 	private User user4 =
-			new User("user04", "password", "brent", "user@email.com", true, "ADMIN");
+			new User("user04", "password", "brent", "user@email.com", true, "ROLE_USER");
 	
 	@Before
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 
-		jdbc.execute("delete from authorities");	
 		jdbc.execute("delete from users");	
 	}
-	
-	
 	
 	@Test
 	public void testCreateRetrieve() {
@@ -68,17 +65,13 @@ public class UserDaoTests {
 	}
 	
 	@Test
-	public void testCreateUser() {
-		User user = new User("user01", "password", "brent", "user@email.com", true, "ADMIN");
+	public void testExists() {
+		usersDao.create(user1);
+		usersDao.create(user2);
+		usersDao.create(user3);
+		assertTrue("User should exist", usersDao.exists(user2.getUsername()));
+		assertFalse("User should not exist", usersDao.exists("lkjl"));
 		
-		usersDao.create(user);
-		
-		List<User> users = usersDao.getAllUsers();
-		
-		assertEquals("Number of users should be 1.", 1, users.size() );
-		
-		assertTrue("User should exist", usersDao.exists(user.getUsername()));
-		
-		assertEquals("Created user be identical to retrieved user", user, users.get(0));	
 	}
+	
 }

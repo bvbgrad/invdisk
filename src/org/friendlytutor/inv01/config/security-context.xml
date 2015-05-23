@@ -39,4 +39,5 @@
 		<security:logout logout-success-url="/logout" />
 	</security:http>
 
+	<security:global-method-security secured-annotations="enabled" />
 </beans>

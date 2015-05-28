@@ -7,7 +7,7 @@
 <html>
 <head>
 	<title>Login Page</title>
-	<link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
+	<link href='c:url value="/static/css/style.css"' rel="stylesheet">
 </head>
 <body onload='document.f.username.focus();'>
 	<h3>Login with Username and Password</h3>
@@ -16,7 +16,7 @@
 		<p class="loginerror"> Check that your username and password are correct. </p>
 	</c:if>
 	
-	<form name='f' action='${pageContext.request.contextPath}/login' method='POST'>
+	<form name='f' action='c:url value="/login"' method='POST'>
 		<table class="formtable">
 			<tr>
 				<td>User:</td>

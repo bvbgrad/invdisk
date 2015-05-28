@@ -7,9 +7,15 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<link href="<c:url value="/static/css/reset.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/style.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/sprites.css"/>" rel="stylesheet">
+	
+<!--	
 	<link href="${pageContext.request.contextPath}/static/css/reset.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/static/css/sprites.css" rel="stylesheet">
+-->
 
 	<!--[if lt IE 9]>
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,7 +36,7 @@
 	
 	<div class="right">
       	${username}
-      	<form name='f' action='${pageContext.request.contextPath}/logout' method='POST'>
+      	<form name='f' action='c:url value="/logout"' method='POST'>
          	<input  class="right" name="submit" type="submit" value="Logout" />
          	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</form>

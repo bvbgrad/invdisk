@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UsersDao {
 
 //	@Autowired
-	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Autowired
 	private SessionFactory sessionFactory;	

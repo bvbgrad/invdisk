@@ -7,9 +7,15 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<link href="<c:url value="/static/css/reset.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/style.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/sprites.css"/>" rel="stylesheet">
+	
+<!--	
 	<link href="${pageContext.request.contextPath}/static/css/reset.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/static/css/sprites.css" rel="stylesheet">
+-->
 
 	<!--[if lt IE 9]>
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

@@ -7,8 +7,11 @@
 <html>
 <head>
 
-<link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/static/scripts/jquery.js" type="text/javascript"></script>
+	<link href="<c:url value="/static/css/reset.css"/>" rel="stylesheet">
+	<link href="<c:url value="/static/css/style.css"/>" rel="stylesheet" type="text/css">
+	<link href="<c:url value="/static/css/sprites.css"/>" rel="stylesheet">
+	
+	<script src='c:url value="/static/scripts/jquery.js"' type="text/javascript"></script>
 
 <script type="text/javascript">
 function onLoad() {
@@ -65,8 +68,7 @@ $(document).ready(onLoad);
 
 
 <sf:form id="details" method="post" 
-	action="${pageContext.request.contextPath}/createaccount" 
-	commandName="user">
+	action='c:url value="/createaccount"'  commandName="user">
 
 <table class="formtable">
 <tr><td class="label">Username: </td><td><sf:input class="control" path="username" name="username" type="text" /><br/>

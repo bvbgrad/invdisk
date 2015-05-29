@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 
-
 <!DOCTYPE html>
 
 <html>
@@ -11,12 +10,6 @@
 	<link href="<c:url value="/static/css/style.css"/>" rel="stylesheet">
 	<link href="<c:url value="/static/css/sprites.css"/>" rel="stylesheet">
 	
-<!--	
-	<link href="${pageContext.request.contextPath}/static/css/reset.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/static/css/sprites.css" rel="stylesheet">
--->
-
 	<!--[if lt IE 9]>
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	    <script src="static/scripts/html5shiv-printshiv.js"></script>

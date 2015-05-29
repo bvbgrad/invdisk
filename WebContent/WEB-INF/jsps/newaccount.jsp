@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
-	<link href="<c:url value="/static/css/reset.css"/>" rel="stylesheet">
-	<link href="<c:url value="/static/css/style.css"/>" rel="stylesheet" type="text/css">
-	<link href="<c:url value="/static/css/sprites.css"/>" rel="stylesheet">
+	<link href='<c:url value="/static/css/reset.css"/>' rel="stylesheet">
+	<link href='<c:url value="/static/css/style.css"/>' rel="stylesheet" type="text/css">
+	<link href='<c:url value="/static/css/sprites.css"/>' rel="stylesheet">
 	
-	<script src='c:url value="/static/scripts/jquery.js"' type="text/javascript"></script>
+	<c:url var="url" value="/static/scripts/jquery.js" />	
+	<script src="${url}" type="text/javascript"></script>
 
 <script type="text/javascript">
 function onLoad() {
@@ -66,9 +66,8 @@ $(document).ready(onLoad);
 </head>
 <body>
 
-
-<sf:form id="details" method="post" 
-	action='c:url value="/createaccount"'  commandName="user">
+<c:url var="url" value="/createaccount" />	
+<sf:form id="details" method="post" action="${url}"  commandName="user">
 
 <table class="formtable">
 <tr><td class="label">Username: </td><td><sf:input class="control" path="username" name="username" type="text" /><br/>

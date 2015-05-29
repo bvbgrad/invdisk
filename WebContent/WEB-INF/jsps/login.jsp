@@ -1,13 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<!DOCTYPE html>
 
 <html>
 <head>
 	<title>Login Page</title>
-	<link href='c:url value="/static/css/style.css"' rel="stylesheet">
+	<link href='<c:url value="/static/css/style.css"/>' rel="stylesheet">
 </head>
 <body onload='document.f.username.focus();'>
 	<h3>Login with Username and Password</h3>
@@ -16,7 +14,8 @@
 		<p class="loginerror"> Check that your username and password are correct. </p>
 	</c:if>
 	
-	<form name='f' action='c:url value="/login"' method='POST'>
+	<c:url var="url" value="/login" />	
+	<form name='f' action="${url}" method='POST'>
 		<table class="formtable">
 			<tr>
 				<td>User:</td>
@@ -34,6 +33,6 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	</form>
 	
-	<p><a href="<c:url value="/newaccount"/>">Create new account</a></p>
+	<p><a href='<c:url value="/newaccount"/>'>Create new account</a></p>
 </body>
 </html>

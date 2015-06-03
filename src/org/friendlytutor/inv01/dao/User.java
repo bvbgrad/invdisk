@@ -1,30 +1,38 @@
 package org.friendlytutor.inv01.dao;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Table(name="users")
 public class User {
 	
-	@NotBlank
-	@Size(min=3, max=15)
-	@Pattern(regexp="^\\w{3,}$")
+	@Id
+	@Column(name="username")
+	@NotBlank (groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Size(min=3, max=15, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Pattern(regexp="^\\w{3,}$", groups={PersistenceValidationGroup.class, FormValidationGroup.class})
 	private String username;
 	
-	@NotBlank
-	@Pattern(regexp="^\\S+$")
-	@Size(min=8, max=15)
+	@NotBlank (groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Pattern(regexp="^\\S+$", groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Size(min=8, max=15, groups={FormValidationGroup.class})
 	private String password;
 	
-	@NotBlank
-	@Size(min=5, max=50)
-	@Pattern(regexp="^\\w{5,}$")
+	@NotBlank (groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Size(min=5, max=50, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Pattern(regexp="^\\w{5,}$", groups={PersistenceValidationGroup.class, FormValidationGroup.class})
 	private String name;
 	
-	@NotBlank
-	@Email
+	@NotBlank (groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Email (groups={PersistenceValidationGroup.class, FormValidationGroup.class})
 	private String email;
 	
 	private boolean enabled = false;
@@ -36,6 +44,7 @@ public class User {
 
 	public User(String username, String password, String name, String email,
 			boolean enabled, String authority) {
+		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
@@ -46,9 +55,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password
-				+ ", name=" + name + ", email=" + email + ", enabled="
-				+ enabled + ", authority=" + authority + "]";
+		return "User [username=" + username + ", name=" + name + ", email="
+				+ email + ", enabled=" + enabled + ", authority=" + authority
+				+ "]";
 	}
 
 	public String getUsername() {
@@ -83,20 +92,20 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public String getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 	@Override

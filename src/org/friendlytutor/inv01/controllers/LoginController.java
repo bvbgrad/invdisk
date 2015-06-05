@@ -43,7 +43,7 @@ public class LoginController {
 		return "admin";
 	}
 
-	@RequestMapping("/login")
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String showLogin() {
 		logger.info("showLogin: "
 			+ SecurityContextHolder.getContext().getAuthentication());

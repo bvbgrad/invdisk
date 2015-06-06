@@ -9,5 +9,5 @@
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
-	<a class="login" href="<c:url value='/j_spring_security_logout'/>">Log Out</a>
+	<a class="login" href="<c:url value='logout'/>">Log Out</a>
 </sec:authorize>

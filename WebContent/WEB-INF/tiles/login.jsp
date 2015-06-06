@@ -10,8 +10,11 @@
 <h3>Login with Username and Password</h3>
 
 <c:if test="${param.error != null}">
-	<p class="loginerror"> Check that your username and password are correct. </p>
+	<p class="loginerror"> Invalid username or password. </p>
 </c:if>
+<c:if test="${param.logout != null}">
+		<p> You have been logged out.</p>
+	</c:if>
 
 <c:url var="url" value="/login" />	
 <form name='f' action="${url}" method='POST'>

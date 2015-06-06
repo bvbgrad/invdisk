@@ -44,6 +44,7 @@
 
 		<tx:annotation-driven />
 
+		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 		<bean id="exceptionTranslator"
 			class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">
 		</bean>

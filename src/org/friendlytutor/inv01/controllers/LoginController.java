@@ -46,21 +46,21 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String showLogin() {
 		logger.info("showLogin: "
-			+ SecurityContextHolder.getContext().getAuthentication());
+			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		return "login";
 	}
 
 	@RequestMapping("/logout")
 	public String showLogout() {
 		logger.info("showLogout: "
-			+ SecurityContextHolder.getContext().getAuthentication());
-		return "login";
+			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		return "logout";
 	}
 
 	@RequestMapping("/newaccount")
 	public String showNewAccount(Model model) {
 		logger.info("showNewAccount: "
-			+ SecurityContextHolder.getContext().getAuthentication());
+			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
 		model.addAttribute("user", new User());
 		return "newaccount";
@@ -71,7 +71,7 @@ public class LoginController {
 			@Validated(FormValidationGroup.class) User user,
 			BindingResult result) {
 		logger.info("createAccount: "
-			+ SecurityContextHolder.getContext().getAuthentication());
+			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
 		if (result.hasErrors()) {
 			System.out.println("create account result error: " + result);

@@ -16,9 +16,19 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp" />
 	</definition>
 
+	<definition name="logout" extends="base">
+		<put-attribute name="title" value="logout" />
+		<put-attribute name="content" value="/WEB-INF/tiles/logout.jsp" />
+	</definition>
+
 	<definition name="inv01" extends="base">
 		<put-attribute name="title" value="Inventory" />
 		<put-attribute name="content" value="/WEB-INF/tiles/inv01.jsp" />
+	</definition>
+
+	<definition name="showoffers" extends="base">
+		<put-attribute name="title" value="Offers" />
+		<put-attribute name="content" value="/WEB-INF/tiles/showoffers.jsp" />
 	</definition>
 
 	<definition name="admin" extends="base">

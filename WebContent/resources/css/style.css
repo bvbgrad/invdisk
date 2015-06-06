@@ -66,6 +66,13 @@ table th	{
 	border: 1px solid blue;
 }
 
+.logoutform {
+	border-style: hidden;
+	position: absolute;
+	right: 0px;
+	height: 50px;
+}
+
 .valid {
 	font-size: .7em;
 	color: green;	

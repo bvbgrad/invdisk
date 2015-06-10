@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base" template="/WEB-INF/layouts/tilesTemplate.jsp">
+		<put-attribute name="includes" value="" />
+		<put-attribute name="title" value="home" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+
+	<definition name="login" extends="base">
+		<put-attribute name="title" value="login" />
+		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp" />
+	</definition>
+
+	<definition name="logout" extends="base">
+		<put-attribute name="title" value="logout" />
+		<put-attribute name="content" value="/WEB-INF/tiles/logout.jsp" />
+	</definition>
+
+	<definition name="inv01" extends="base">
+		<put-attribute name="title" value="Inventory" />
+		<put-attribute name="content" value="/WEB-INF/tiles/inv01.jsp" />
+	</definition>
+
+	<definition name="showoffers" extends="base">
+		<put-attribute name="title" value="Offers" />
+		<put-attribute name="content" value="/WEB-INF/tiles/showoffers.jsp" />
+	</definition>
+
+	<definition name="admin" extends="base">
+		<put-attribute name="title" value="Administration" />
+		<put-attribute name="content" value="/WEB-INF/tiles/admin.jsp" />
+	</definition>
+
+	<definition name="error" extends="base">
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="content" value="/WEB-INF/tiles/error.jsp" />
+	</definition>
+
+	<definition name="newaccount" extends="base">
+		<put-attribute name="includes" value="/WEB-INF/tiles/newaccountscript.jsp" />
+		<put-attribute name="title" value="New Account" />
+		<put-attribute name="content" value="/WEB-INF/tiles/newaccount.jsp" />
+	</definition>
+
+	<definition name="accountcreated" extends="base">
+		<put-attribute name="title" value="Account Created" />
+		<put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp" />
+	</definition>
+
+</tiles-definitions>

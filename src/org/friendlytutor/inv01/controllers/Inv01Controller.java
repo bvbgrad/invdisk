@@ -23,10 +23,17 @@ public class Inv01Controller {
 		this.offersService = offersService;
 	}
 	
-	@Secured("ROLE_VIEWER")
+//	@Secured("ROLE_VIEWER")
 	@RequestMapping("/")
 	public String showHome (Model model) {
         logger.info("showHome: " +
+           SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		return "inv01";
+	}
+	
+	@RequestMapping("/showoffers")
+	public String showOffers (Model model) {
+        logger.info("showOffers: " +
            SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
         System.out.println();  // blank line to visually offset this information
@@ -40,7 +47,7 @@ public class Inv01Controller {
 		
 		String sUsername = SecurityContextHolder.getContext().getAuthentication().getName();
 		model.addAttribute("username", sUsername);
-		return "inv01";
+		return "showoffers";
 	}
 	
 }

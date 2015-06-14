@@ -1,5 +1,6 @@
 package org.friendlytutor.inv01.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -98,4 +99,16 @@ public class LoginController {
 		logger.info("createAccount exit: " + user);
 		return "accountcreated";
 	}
+	
+	@RequestMapping(value = "/deleteaccount", method = RequestMethod.POST)
+	public String deleteAccount(Model model) {
+		logger.info("deleteAccount: "
+				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		List<User> users = usersDao.getAllUsers();
+		model.addAttribute("users", users);
+		
+		model.addAttribute("userName", new Date());
+
+			return "admin";
+		}
 }

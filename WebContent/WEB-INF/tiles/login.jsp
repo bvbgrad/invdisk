@@ -1,12 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		document.f.j_username.focus();
-	})
-</script>
-
 <h3>Login with Username and Password</h3>
 
 <c:if test="${param.error != null}">
@@ -36,3 +29,10 @@
 </form>
 
 <p><a href='<c:url value="/newaccount"/>'>Create new account</a></p>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		document.f.username.focus();
+	})
+</script>

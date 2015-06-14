@@ -1,6 +1,5 @@
 package org.friendlytutor.inv01.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -16,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -101,14 +101,16 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/deleteaccount", method = RequestMethod.POST)
-	public String deleteAccount(Model model) {
-		logger.info("deleteAccount: "
+	public String deleteAccount(@RequestParam("userName") String username, Model model) {
+		logger.info("deleteAccount: " + username + " "
 				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		
+		usersDao.deleteUser(username);			
+
+		// return updated list of users
 		List<User> users = usersDao.getAllUsers();
 		model.addAttribute("users", users);
 		
-		model.addAttribute("userName", new Date());
-
-			return "admin";
-		}
+		return "admin";
+	}
 }

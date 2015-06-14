@@ -62,7 +62,6 @@ public class UserDaoTests {
 		users = usersDao.getAllUsers();
 		assertEquals("Four users should have been created and retrieved",
 				4, users.size());
-		
 	}
 	
 	@Test
@@ -72,6 +71,28 @@ public class UserDaoTests {
 		usersDao.create(user3);
 		assertTrue("User should exist", usersDao.exists(user2.getUsername()));
 		assertFalse("User should not exist", usersDao.exists("lkjl"));
+	}
+	
+	@Test
+	public void testDelete() {
+		usersDao.create(user1);
+		usersDao.create(user2);
+		usersDao.create(user3);
+		usersDao.create(user4);
+		
+		List<User> users = usersDao.getAllUsers();
+		assertEquals("Four users should have been created and retrieved",
+				4, users.size());
+		
+		String sUser3username = user3.getUsername();
+		assertTrue("User should exist", usersDao.exists(sUser3username));
+		
+		usersDao.deleteUser(sUser3username);
+		
+		assertFalse("User should not exist", usersDao.exists(sUser3username));
+		
+		users = usersDao.getAllUsers();
+		assertEquals("Now there should be three users", 3, users.size());
 		
 	}
 	

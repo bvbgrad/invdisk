@@ -41,6 +41,14 @@ public class UsersDao {
 		return user != null;
 	}
 
+	public void deleteUser(String username) {
+		Criteria crit = session().createCriteria(User.class);
+		crit.add(Restrictions.idEq(username));
+		User user = (User)crit.uniqueResult();
+		session().delete(user);
+		return;
+	}
+	
 	@Secured("ROLE_ADMIN")
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {

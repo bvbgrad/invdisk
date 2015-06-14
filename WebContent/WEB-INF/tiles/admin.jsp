@@ -30,11 +30,9 @@
 	<a href="<c:url value="/"/>">Home page</a>
 </p>
 
-<p>Username = ${userName}</p>
-
 <c:url var="url" value="/deleteaccount" />
-<sf:form id="deleteAccount" method="post" action="${url}">
-	<input type="hidden" value="${userName}" name="deleteUser">
+<sf:form id="sfDeleteAccount" method="post" action="${url}">
+	<input type="hidden" id="deleteUser" name="userName">
 </sf:form>
 
 
@@ -43,8 +41,8 @@
 		var nRow = x.parentNode.parentNode.rowIndex;
 		var userName = document.getElementById("table").rows[nRow].cells[0].innerHTML;
 		if (confirm('Delete account: "' + userName + '"\nAre you sure ?')) {
-			alert("usernname: " + userName);
-			document.getElementById("deleteAccount").submit();
+			document.getElementById("deleteUser").value = userName;
+			document.getElementById("sfDeleteAccount").submit();
 		}
 	}
 </script>

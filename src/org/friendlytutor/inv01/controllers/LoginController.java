@@ -2,10 +2,12 @@ package org.friendlytutor.inv01.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
-import org.friendlytutor.inv01.dao.FormValidationGroup;
 import org.friendlytutor.inv01.dao.PersistenceValidationGroup;
 import org.friendlytutor.inv01.dao.User;
+import org.friendlytutor.inv01.dao.UserValidator;
 import org.friendlytutor.inv01.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +27,9 @@ public class LoginController {
 	private Logger logger = Logger.getLogger(LoginController.class);
 
 	private UsersDao usersDao;
+	
+	@Autowired
+    UserValidator validator;
 
 	@Autowired
 	public void setUsersDao(UsersDao usersDao) {
@@ -69,23 +75,37 @@ public class LoginController {
 	}
 
 	@RequestMapping("/editaccount")
-	public String editAccount(@RequestParam("userName") String username, Model model) {
+	public String editAccount(
+			@RequestParam("userName") String username,
+			@ModelAttribute("user") User user,
+			BindingResult result,
+			Model model) {
 		logger.info("editAccount: " + username + " "
 				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
-		User user = usersDao.getUser(username);		
+		   //Validation code
+	    validator.validate(user, result);
+
+		if (result.hasErrors()) {
+			System.out.println("result: " + result);
+	    }
+				
+		user = usersDao.getUser(username);		
 		model.addAttribute("user", user);
 		return "editaccount";
 	}
 	
 	@RequestMapping("/updateaccount")
 	public String updateAccount(
-			@Validated User user, 
+			@ModelAttribute("user") User user,
 			BindingResult result,
 			Model model) {
 		logger.info("updateAccount: "
 				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
+		   //Validation code
+	    validator.validate(user, result);
+
 		if (result.hasErrors()) {
 			System.out.println("result: " + result);
 	    }

@@ -53,9 +53,13 @@
 	</definition>
 
 	<definition name="editaccount" extends="base">
-		<put-attribute name="includes" value="/WEB-INF/tiles/newaccountscript.jsp" />
 		<put-attribute name="title" value="Edit Account" />
 		<put-attribute name="content" value="/WEB-INF/tiles/editaccount.jsp" />
+	</definition>
+
+	<definition name="updateaccount" extends="base">
+		<put-attribute name="title" value="Update Account" />
+		<put-attribute name="content" value="/WEB-INF/tiles/updateaccount.jsp" />
 	</definition>
 
 </tiles-definitions>

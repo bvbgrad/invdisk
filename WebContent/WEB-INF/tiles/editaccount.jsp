@@ -6,7 +6,7 @@
 ${user.password}
 
 <c:url var="url" value="/updateaccount" />
-<sf:form id="details" method="post" action="${url}" commandName="user">
+<sf:form id="details" method="post" action="${url}" commandName="user" validate="none">
 	<table class="formtable">
 		<tr>
 			<td class="label">Name:</td>
@@ -36,7 +36,7 @@ ${user.password}
 	</table>
 
 	<sf:input type="hidden" path="username" name="username" />
-	<sf:input type="hidden" path="password" name="password" />
+	<sf:input type="hidden" path="password" name="password" validate="none" />
 </sf:form>
 
 <script>

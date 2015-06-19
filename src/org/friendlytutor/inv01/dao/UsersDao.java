@@ -40,6 +40,10 @@ public class UsersDao {
 		User user = (User)crit.uniqueResult();
 		return user != null;
 	}
+	
+	public void updateUser(User user) {
+		session().saveOrUpdate(user);
+	}
 
 	public void deleteUser(String username) {
 		Criteria crit = session().createCriteria(User.class);
@@ -47,6 +51,13 @@ public class UsersDao {
 		User user = (User)crit.uniqueResult();
 		session().delete(user);
 		return;
+	}
+	
+	public User getUser(String username) {
+		Criteria crit = session().createCriteria(User.class);
+		crit.add(Restrictions.idEq(username));
+		User user = (User)crit.uniqueResult();
+		return user;
 	}
 	
 	@Secured("ROLE_ADMIN")

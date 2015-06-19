@@ -20,7 +20,7 @@
 			<td>${row.name}</td>
 			<td>${row.email}</td>
 			<td>${row.enabled}</td>
-			<td><a href="<c:url value="/logout"/>">Edit</a></td>
+			<td><input type="button" value="Edit" onclick="userEdit(this)"></td>
 			<td><input type="button" value="Delete" onclick="userDelete(this)"></td>
 		</tr>
 	</c:forEach>
@@ -30,20 +30,28 @@
 	<a href="<c:url value="/"/>">Home page</a>
 </p>
 
-<c:url var="url" value="/deleteaccount" />
-<sf:form id="sfDeleteAccount" method="post" action="${url}">
-	<input type="hidden" id="deleteUser" name="userName">
+<sf:form id="sfForm" method="post">
+	<input type="hidden" id="sfusername" name="userName">
 </sf:form>
 
-
+<c:url var="url" value="/" />
 <script>
 	function userDelete(x) {
 		var nRow = x.parentNode.parentNode.rowIndex;
 		var userName = document.getElementById("table").rows[nRow].cells[0].innerHTML;
-		if (confirm('Delete account: "' + userName + '"\nAre you sure ?')) {
-			document.getElementById("deleteUser").value = userName;
-			document.getElementById("sfDeleteAccount").submit();
+		document.getElementById("sfForm").action = "${url}deleteaccount";
+		document.getElementById("sfusername").value = userName;
+		if (confirm('\nDelete account: "' + userName + '"\nAre you sure ?')) {
+			document.getElementById("sfForm").submit();
 		}
+	}
+
+	function userEdit(x) {
+		var nRow = x.parentNode.parentNode.rowIndex;
+		var userName = document.getElementById("table").rows[nRow].cells[0].innerHTML;
+		document.getElementById("sfForm").action = "${url}editaccount";
+		document.getElementById("sfusername").value = userName;
+		document.getElementById("sfForm").submit();
 	}
 </script>
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.friendlytutor.inv01.dao.FormValidationGroup;
+import org.friendlytutor.inv01.dao.PersistenceValidationGroup;
 import org.friendlytutor.inv01.dao.User;
 import org.friendlytutor.inv01.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,9 +68,38 @@ public class LoginController {
 		return "newaccount";
 	}
 
+	@RequestMapping("/editaccount")
+	public String editAccount(@RequestParam("userName") String username, Model model) {
+		logger.info("editAccount: " + username + " "
+				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		
+		User user = usersDao.getUser(username);		
+		model.addAttribute("user", user);
+		return "editaccount";
+	}
+	
+	@RequestMapping("/updateaccount")
+	public String updateAccount(
+			@Validated User user, 
+			BindingResult result,
+			Model model) {
+		logger.info("updateAccount: "
+				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		
+		if (result.hasErrors()) {
+			System.out.println("result: " + result);
+	    }
+		
+		System.out.println("update user: " + user);
+		
+		usersDao.updateUser(user);
+		model.addAttribute("user", user);
+		return "admin";
+	}
+	
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
 	public String createAccount(
-			@Validated(FormValidationGroup.class) User user,
+			@Validated(PersistenceValidationGroup.class) User user,
 			BindingResult result) {
 		logger.info("createAccount: "
 			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());

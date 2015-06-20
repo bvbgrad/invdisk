@@ -37,7 +37,8 @@ public class LoginController {
 	@RequestMapping("/admin")
 	public String showAdmin(Model model) {
 		logger.info("showAdmin: "
-			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+			+ SecurityContextHolder.getContext().getAuthentication().getName()
+			+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		List<User> users = usersDao.getAllUsers();
 		model.addAttribute("users", users);
@@ -52,21 +53,24 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String showLogin() {
 		logger.info("showLogin: "
-			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		return "login";
 	}
 
 	@RequestMapping("/logout")
 	public String showLogout() {
 		logger.info("showLogout: "
-			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		return "logout";
 	}
 
 	@RequestMapping("/newaccount")
 	public String showNewAccount(Model model) {
 		logger.info("showNewAccount: "
-			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
 		model.addAttribute("user", new User());
 		return "newaccount";
@@ -77,7 +81,8 @@ public class LoginController {
 			@RequestParam("userName") String username,
 			Model model) {
 		logger.info("editAccount: " + username + " "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		   //Validation code
 //	    validator.validate(user, result);
@@ -98,7 +103,8 @@ public class LoginController {
 			BindingResult result,
 			Model model) {
 		logger.info("updateAccount: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		   //Validation code
 //	    validator.validate(user, result);
@@ -121,7 +127,8 @@ public class LoginController {
 			@Validated(PersistenceValidationGroup.class) User user,
 			BindingResult result) {
 		logger.info("createAccount: "
-			+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
 		if (result.hasErrors()) {
 			System.out.println("create account result error: " + result);
@@ -152,7 +159,8 @@ public class LoginController {
 	@RequestMapping(value = "/deleteaccount", method = RequestMethod.POST)
 	public String deleteAccount(@RequestParam("userName") String username, Model model) {
 		logger.info("deleteAccount: " + username + " "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		usersDao.deleteUser(username);			
 

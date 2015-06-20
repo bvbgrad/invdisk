@@ -26,27 +26,24 @@ public class Inv01Controller {
 //	@Secured("ROLE_VIEWER")
 	@RequestMapping("/")
 	public String showHome (Model model) {
-        logger.info("showHome: " +
-           SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		logger.info("showHome: "
+				+ SecurityContextHolder.getContext().getAuthentication().getDetails());
+		logger.info("showHome: "
+				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        logger.info("showHome: "
+    			+ SecurityContextHolder.getContext().getAuthentication().getName()
+    			+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		return "inv01";
 	}
 	
 	@RequestMapping("/showoffers")
 	public String showOffers (Model model) {
-        logger.info("showOffers: " +
-           SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        logger.info("showOffers: "
+    			+ SecurityContextHolder.getContext().getAuthentication().getName()
+    			+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
-        System.out.println();  // blank line to visually offset this information
-		System.out.println("Run: " + new java.util.Date());
 		List<Offer> offers = offersService.getOffersService();
 		model.addAttribute("offers", offers);
-		System.out.println("number of offers = " + offers.size());
-		for (Offer offer : offers) {
-			System.out.println(offer);
-		}
-		
-		String sUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-		model.addAttribute("username", sUsername);
 		return "showoffers";
 	}
 	

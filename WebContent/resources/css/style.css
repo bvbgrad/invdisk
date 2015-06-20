@@ -90,6 +90,13 @@ div.header {
 	background-color: #0099FF;
 }
 
+.username {
+	color: black;
+	position: absolute;
+	top: 12px;
+	right: 80px;	
+}
+
 a.title {
 	color: white;
 	font-size: 1.5em;

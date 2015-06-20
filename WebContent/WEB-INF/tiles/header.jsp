@@ -14,4 +14,5 @@
 		<input type="submit" name="submit" value="Logout" />
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</sf:form>
+	<div class="username"><sec:authentication property="principal.username" /></div>
 </sec:authorize>

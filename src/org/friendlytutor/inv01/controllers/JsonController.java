@@ -32,7 +32,8 @@ public class JsonController {
 	@RequestMapping(value="/checkerror")
 	public Offer checkError(HttpServletRequest req) {
 		logger.info("checkError: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		String sId = req.getParameter("id");
 		int id = 0;
@@ -54,7 +55,8 @@ public class JsonController {
 	@RequestMapping(value="/get")
 	public Map<String, Object> getData(Model model) {
 		logger.info("getData: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("messages", "Message01");
@@ -65,7 +67,8 @@ public class JsonController {
 	@RequestMapping("/hello/{player}")
     public Message message(@PathVariable String player) {
 		logger.info("message: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
         Message msg = new Message(player, "Hello " + player);
         return msg;
@@ -74,7 +77,8 @@ public class JsonController {
 	@RequestMapping(value="/offer")
 	public Offer getOffer() {
 		logger.info("getOffer: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		Offer offer = new Offer();
 		try {
@@ -91,7 +95,8 @@ public class JsonController {
 	@RequestMapping(value="/offers")
 	public List<Offer> getOffers() {
 		logger.info("getOffers: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		
 		List<Offer> offers = new ArrayList<Offer>();
 		offers = offersService.getOffersService();

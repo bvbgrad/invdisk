@@ -21,14 +21,16 @@
 			<td>${row.email}</td>
 			<td>${row.enabled}</td>
 			<td><input type="button" value="Edit" onclick="userEdit(this)"></td>
+			<td><input type="button" value="Reset Password" onclick="resetPassword(this)"></td>
 			<td><input type="button" value="Delete" onclick="userDelete(this)"></td>
 		</tr>
 	</c:forEach>
 </table>
 
-<p>
-	<a href="<c:url value="/"/>">Home page</a>
-</p>
+<!-- Stand alone response choices -->
+<br/><p><a href="<c:url value="/"/>">Home page</a></p>
+
+<!-- Responses to buttons embedded within the table -->
 
 <sf:form id="sfForm" method="post">
 	<input type="hidden" id="sfusername" name="userName">
@@ -36,6 +38,22 @@
 
 <c:url var="url" value="/" />
 <script>
+	function userEdit(x) {
+		var nRow = x.parentNode.parentNode.rowIndex;
+		var userName = document.getElementById("table").rows[nRow].cells[0].innerHTML;
+		document.getElementById("sfForm").action = "${url}editaccount";
+		document.getElementById("sfusername").value = userName;
+		document.getElementById("sfForm").submit();
+	}
+
+	function resetPassword(x) {
+		var nRow = x.parentNode.parentNode.rowIndex;
+		var userName = document.getElementById("table").rows[nRow].cells[0].innerHTML;
+		document.getElementById("sfForm").action = "${url}resetpassword";
+		document.getElementById("sfusername").value = userName;
+		document.getElementById("sfForm").submit();
+	}
+
 	function userDelete(x) {
 		var nRow = x.parentNode.parentNode.rowIndex;
 		var userName = document.getElementById("table").rows[nRow].cells[0].innerHTML;
@@ -46,12 +64,5 @@
 		}
 	}
 
-	function userEdit(x) {
-		var nRow = x.parentNode.parentNode.rowIndex;
-		var userName = document.getElementById("table").rows[nRow].cells[0].innerHTML;
-		document.getElementById("sfForm").action = "${url}editaccount";
-		document.getElementById("sfusername").value = userName;
-		document.getElementById("sfForm").submit();
-	}
 </script>
 

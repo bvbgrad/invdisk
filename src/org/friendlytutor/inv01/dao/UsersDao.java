@@ -34,6 +34,13 @@ public class UsersDao {
 		return;
 	}
 	
+	@Transactional
+	public void resetPassword(User user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		session().saveOrUpdate(user);
+		return;
+	}
+	
 	public boolean exists(String username) {
 		Criteria crit = session().createCriteria(User.class);
 		crit.add(Restrictions.idEq(username));

@@ -83,14 +83,7 @@ public class LoginController {
 		logger.info("editAccount: " + username + " "
 				+ SecurityContextHolder.getContext().getAuthentication().getName()
 				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
-		
-		   //Validation code
-//	    validator.validate(user, result);
-//
-//		if (result.hasErrors()) {
-//			System.out.println("result: " + result);
-//	    }
-//				
+
 		User user = usersDao.getUser(username);		
 		model.addAttribute("user", user);
 
@@ -122,6 +115,44 @@ public class LoginController {
 		return "admin";
 	}
 	
+	@RequestMapping("/resetpassword")
+	public String resetPassword(
+			@RequestParam("userName") String username,
+			Model model) {
+		logger.info("resetPassword for '" + username + "' "
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+		
+		User user = usersDao.getUser(username);		
+		System.out.println("resetPassword for user: " + user);
+		model.addAttribute("user", user);
+		
+		return "resetpassword";
+	}
+	
+	@RequestMapping(value = "/updatepassword", method = RequestMethod.POST)
+	public String updatePassword(
+			@Validated(PersistenceValidationGroup.class) User user,
+			BindingResult result,
+			Model model) {
+		logger.info("updatePassword: "
+				+ SecurityContextHolder.getContext().getAuthentication().getName()
+				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+		
+		if (result.hasErrors()) {
+			System.out.println("update password error: " + result);
+			return "resetpassword";
+		}
+		
+		System.out.println("update user: " + user);
+		
+		usersDao.resetPassword(user);
+		
+		List<User> users = usersDao.getAllUsers();
+		model.addAttribute("users", users);
+		return "admin";
+	}
+		
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
 	public String createAccount(
 			@Validated(PersistenceValidationGroup.class) User user,

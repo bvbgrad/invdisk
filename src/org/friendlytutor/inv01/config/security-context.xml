@@ -39,6 +39,8 @@
 		<security:intercept-url pattern="/offer" access="isAuthenticated()" />
 		<security:intercept-url pattern="/editaccount" access="isAuthenticated()" />
 		<security:intercept-url pattern="/updateaccount" access="isAuthenticated()" />
+		<security:intercept-url pattern="/resetpassword" access="isAuthenticated()" />
+		<security:intercept-url pattern="/updatepassword" access="isAuthenticated()" />
 		<security:intercept-url pattern="/admin" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/deleteaccount" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/**" access="denyAll" />

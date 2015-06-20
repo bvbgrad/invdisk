@@ -2,8 +2,6 @@ package org.friendlytutor.inv01.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.apache.log4j.Logger;
 import org.friendlytutor.inv01.dao.PersistenceValidationGroup;
 import org.friendlytutor.inv01.dao.User;
@@ -28,8 +26,8 @@ public class LoginController {
 
 	private UsersDao usersDao;
 	
-	@Autowired
-    UserValidator validator;
+//	@Autowired
+//    UserValidator validator;
 
 	@Autowired
 	public void setUsersDao(UsersDao usersDao) {
@@ -77,21 +75,20 @@ public class LoginController {
 	@RequestMapping("/editaccount")
 	public String editAccount(
 			@RequestParam("userName") String username,
-			@ModelAttribute("user") User user,
-			BindingResult result,
 			Model model) {
 		logger.info("editAccount: " + username + " "
 				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
 		   //Validation code
-	    validator.validate(user, result);
-
-		if (result.hasErrors()) {
-			System.out.println("result: " + result);
-	    }
-				
-		user = usersDao.getUser(username);		
+//	    validator.validate(user, result);
+//
+//		if (result.hasErrors()) {
+//			System.out.println("result: " + result);
+//	    }
+//				
+		User user = usersDao.getUser(username);		
 		model.addAttribute("user", user);
+
 		return "editaccount";
 	}
 	
@@ -104,16 +101,18 @@ public class LoginController {
 				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
 		   //Validation code
-	    validator.validate(user, result);
-
-		if (result.hasErrors()) {
-			System.out.println("result: " + result);
-	    }
-		
+//	    validator.validate(user, result);
+//
+//		if (result.hasErrors()) {
+//			System.out.println("result: " + result);
+//	    }
+//		
 		System.out.println("update user: " + user);
 		
 		usersDao.updateUser(user);
-		model.addAttribute("user", user);
+		
+		List<User> users = usersDao.getAllUsers();
+		model.addAttribute("users", users);
 		return "admin";
 	}
 	

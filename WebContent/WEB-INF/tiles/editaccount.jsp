@@ -2,12 +2,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h2>Edit Account: ${user.username}</h2>
-${user.password}
-
 <c:url var="url" value="/updateaccount" />
-<sf:form id="details" method="post" action="${url}" commandName="user" validate="none">
+<sf:form id="sfform" method="post" action="${url}" commandName="user" onsubmit="return false;">
 	<table class="formtable">
+		<caption>Edit "${user.username}" Account</caption>
 		<tr>
 			<td class="label">Name:</td>
 			<td><sf:input class="control" path="name" name="name" type="text" /><br />
@@ -29,18 +27,23 @@ ${user.password}
 				<sf:errors path="name" cssClass="error"></sf:errors></td>
 		</tr>
 		<tr>
-			<td><button onclick="goBack()">Cancel</button></td>
-			<td><input class="control" value="Update account information"
-				type="submit" /></td>
+			<td colspan="2"><button onclick="submitUpdate()">Update account information</button></td>
+		</tr>
+		<tr>
+			<td colspan="2"><button onclick="cancel()">Cancel</button></td>
 		</tr>
 	</table>
 
 	<sf:input type="hidden" path="username" name="username" />
-	<sf:input type="hidden" path="password" name="password" validate="none" />
+	<sf:input type="hidden" path="password" name="password" />
 </sf:form>
 
 <script>
-	function goBack() {
+	function submitUpdate() {
+		document.getElementById("sfform").submit();
+	}
+	
+	function cancel() {
 		window.history.back();
 	}
 </script>

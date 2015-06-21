@@ -95,9 +95,11 @@ public class LoginController {
 			@ModelAttribute("user") User user,
 			BindingResult result,
 			Model model) {
+		String sRole = 
+			SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();		
 		logger.info("updateAccount: "
 				+ SecurityContextHolder.getContext().getAuthentication().getName()
-				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+				+ " " + sRole);
 		
 		   //Validation code
 //	    validator.validate(user, result);
@@ -109,10 +111,16 @@ public class LoginController {
 		System.out.println("update user: " + user);
 		
 		usersDao.updateUser(user);
-		
-		List<User> users = usersDao.getAllUsers();
-		model.addAttribute("users", users);
-		return "admin";
+
+// return a list of all users if acting as the Admin
+		if(sRole == "ROLE_ADMIN") {
+			List<User> users = usersDao.getAllUsers();
+			model.addAttribute("users", users);
+			return "admin";
+		}
+
+// default is to go to the home page
+		return "inv01";
 	}
 	
 	@RequestMapping("/resetpassword")
@@ -135,9 +143,11 @@ public class LoginController {
 			@Validated(PersistenceValidationGroup.class) User user,
 			BindingResult result,
 			Model model) {
+		String sRole = 
+				SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
 		logger.info("updatePassword: "
 				+ SecurityContextHolder.getContext().getAuthentication().getName()
-				+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+				+ " " + sRole);
 		
 		if (result.hasErrors()) {
 			System.out.println("update password error: " + result);
@@ -148,9 +158,15 @@ public class LoginController {
 		
 		usersDao.resetPassword(user);
 		
-		List<User> users = usersDao.getAllUsers();
-		model.addAttribute("users", users);
-		return "admin";
+		// return a list of all users if acting as the Admin
+				if(sRole == "ROLE_ADMIN") {
+					List<User> users = usersDao.getAllUsers();
+					model.addAttribute("users", users);
+					return "admin";
+				}
+
+		// default is to go to the home page
+				return "inv01";
 	}
 		
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)

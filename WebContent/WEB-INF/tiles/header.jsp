@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
-<a class="title" href="<c:url value='/'/>">Inventory</a>
+<a class="title" href="<c:url value='/'/>">Disk Inventory</a>
 
 <sec:authorize access="!isAuthenticated()">
 	<a class="login" href="<c:url value='/login'/>">Log in</a>

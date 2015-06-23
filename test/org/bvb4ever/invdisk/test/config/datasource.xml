@@ -10,12 +10,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
-	<context:component-scan base-package="org.friendlytutor.inv01.test">
+	<context:component-scan base-package="org.bvb4ever.invdisk.test">
 	</context:component-scan>
 
 	<beans profile="dev">
 		<context:property-placeholder
-			location="org/friendlytutor/inv01/test/config/jdbc.properties" />
+			location="org/bvb4ever/invdisk/test/config/jdbc.properties" />
 
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 			destroy-method="close">
@@ -33,16 +33,16 @@
 				<props>
 					<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 					<prop key="javax.persistence.validation.group.pre-persist">
-						org.friendlytutor.inv01.dao.PersistenceValidationGroup</prop>
+						org.bvb4ever.invdisk.dao.PersistenceValidationGroup</prop>
        				<prop key="javax.persistence.validation.group.pre-update">
-       					org.friendlytutor.inv01.dao.PersistenceValidationGroup</prop>
+       					org.bvb4ever.invdisk.dao.PersistenceValidationGroup</prop>
        				<prop key="javax.persistence.validation.group.pre-remove"
-       					>org.friendlytutor.inv01.dao.PersistenceValidationGroup</prop>
+       					>org.bvb4ever.invdisk.dao.PersistenceValidationGroup</prop>
 				</props>
 			</property>
 			<property name="packagesToScan">
 				<list>
-					<value>org.friendlytutor.inv01.dao</value>
+					<value>org.bvb4ever.invdisk.dao</value>
 				</list>
 			</property>
 		</bean>

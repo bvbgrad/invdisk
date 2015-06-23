@@ -18,7 +18,7 @@
 	</div>
 </sec:authorize>
 
-<p class="welcome">Welcome to the Inventory program.</p>
+<p class="welcome">Welcome to the Disk Inventory program.</p>
 
 	
 <sec:authorize access="hasRole('USER')">

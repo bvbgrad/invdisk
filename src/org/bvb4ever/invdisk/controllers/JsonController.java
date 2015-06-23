@@ -1,4 +1,4 @@
-package org.friendlytutor.inv01.controllers;
+package org.bvb4ever.invdisk.controllers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.friendlytutor.inv01.dao.Message;
-import org.friendlytutor.inv01.dao.Offer;
-import org.friendlytutor.inv01.dao.OffersDao;
-import org.friendlytutor.inv01.dao.OffersService;
+import org.bvb4ever.invdisk.dao.Message;
+import org.bvb4ever.invdisk.dao.Offer;
+import org.bvb4ever.invdisk.dao.OffersDao;
+import org.bvb4ever.invdisk.dao.OffersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;

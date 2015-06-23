@@ -1,4 +1,4 @@
-package org.friendlytutor.inv01.test.tests;
+package org.bvb4ever.invdisk.test.tests;
 
 import static org.junit.Assert.*;
 
@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.friendlytutor.inv01.dao.User;
-import org.friendlytutor.inv01.dao.UsersDao;
+import org.bvb4ever.invdisk.dao.User;
+import org.bvb4ever.invdisk.dao.UsersDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +19,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ActiveProfiles("dev")
 @ContextConfiguration(locations = {
-		"classpath:org/friendlytutor/inv01/config/dao-context.xml",
-		"classpath:org/friendlytutor/inv01/test/config/datasource.xml" })
+		"classpath:org/bvb4ever/invdisk/config/dao-context.xml",
+		"classpath:org/bvb4ever/invdisk/test/config/datasource.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserDaoTests {
 

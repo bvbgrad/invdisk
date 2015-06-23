@@ -1,12 +1,12 @@
-package org.friendlytutor.inv01.controllers;
+package org.bvb4ever.invdisk.controllers;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.friendlytutor.inv01.dao.PersistenceValidationGroup;
-import org.friendlytutor.inv01.dao.User;
-import org.friendlytutor.inv01.dao.UserValidator;
-import org.friendlytutor.inv01.dao.UsersDao;
+import org.bvb4ever.invdisk.dao.PersistenceValidationGroup;
+import org.bvb4ever.invdisk.dao.User;
+import org.bvb4ever.invdisk.dao.UserValidator;
+import org.bvb4ever.invdisk.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -120,7 +120,7 @@ public class LoginController {
 		}
 
 // default is to go to the home page
-		return "inv01";
+		return "invdisk";
 	}
 	
 	@RequestMapping("/resetpassword")
@@ -166,7 +166,7 @@ public class LoginController {
 				}
 
 		// default is to go to the home page
-				return "inv01";
+				return "invdisk";
 	}
 		
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)

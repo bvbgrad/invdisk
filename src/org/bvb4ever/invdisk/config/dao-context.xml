@@ -9,7 +9,7 @@
 
 
 	<context:annotation-config></context:annotation-config>
-		<context:component-scan base-package="org.friendlytutor.inv01.dao">
+		<context:component-scan base-package="org.bvb4ever.invdisk.dao">
 	</context:component-scan>
 
 		<bean id="sessionFactory"
@@ -19,16 +19,16 @@
 				<props>
 					<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 					<prop key="javax.persistence.validation.group.pre-persist">
-						org.friendlytutor.inv01.dao.PersistenceValidationGroup</prop>
+						org.bvb4ever.invdisk.dao.PersistenceValidationGroup</prop>
        				<prop key="javax.persistence.validation.group.pre-update">
-       					org.friendlytutor.inv01.dao.PersistenceValidationGroup</prop>
+       					org.bvb4ever.invdisk.dao.PersistenceValidationGroup</prop>
        				<prop key="javax.persistence.validation.group.pre-remove">
-       					org.friendlytutor.inv01.dao.PersistenceValidationGroup</prop>
+       					org.bvb4ever.invdisk.dao.PersistenceValidationGroup</prop>
 				</props>
 			</property>
 			<property name="packagesToScan">
 				<list>
-					<value>org.friendlytutor.inv01.dao</value>
+					<value>org.bvb4ever.invdisk.dao</value>
 				</list>
 			</property>
 		</bean>

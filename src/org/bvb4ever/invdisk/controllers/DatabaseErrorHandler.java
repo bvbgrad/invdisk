@@ -1,4 +1,4 @@
-package org.friendlytutor.inv01.controllers;
+package org.bvb4ever.invdisk.controllers;
 
 import java.net.ConnectException;
 import java.sql.SQLException;

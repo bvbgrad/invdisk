@@ -1,10 +1,10 @@
-package org.friendlytutor.inv01.controllers;
+package org.bvb4ever.invdisk.controllers;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.friendlytutor.inv01.dao.Offer;
-import org.friendlytutor.inv01.dao.OffersService;
+import org.bvb4ever.invdisk.dao.Offer;
+import org.bvb4ever.invdisk.dao.OffersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,9 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Inv01Controller {
+public class InvdiskController {
 
-	private Logger logger = Logger.getLogger(Inv01Controller.class);
+	private Logger logger = Logger.getLogger(InvdiskController.class);
 	
 	private OffersService offersService;
 	@Autowired
@@ -33,7 +33,7 @@ public class Inv01Controller {
         logger.info("showHome: "
     			+ SecurityContextHolder.getContext().getAuthentication().getName()
     			+ " " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
-		return "inv01";
+		return "invdisk";
 	}
 	
 	@RequestMapping("/showoffers")

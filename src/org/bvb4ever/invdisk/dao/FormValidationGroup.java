@@ -1,4 +1,4 @@
-package org.friendlytutor.inv01.dao;
+package org.bvb4ever.invdisk.dao;
 
 public interface FormValidationGroup {
 

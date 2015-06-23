@@ -21,9 +21,9 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/logout.jsp" />
 	</definition>
 
-	<definition name="inv01" extends="base">
-		<put-attribute name="title" value="Inventory" />
-		<put-attribute name="content" value="/WEB-INF/tiles/inv01.jsp" />
+	<definition name="invdisk" extends="base">
+		<put-attribute name="title" value="Disk Inventory" />
+		<put-attribute name="content" value="/WEB-INF/tiles/invdisk.jsp" />
 	</definition>
 
 	<definition name="showoffers" extends="base">

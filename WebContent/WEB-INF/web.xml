@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>inv01</display-name>
+  <display-name>invdisk</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -11,19 +11,19 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>inv01</display-name>
-    <servlet-name>inv01</servlet-name>
+    <display-name>invdisk</display-name>
+    <servlet-name>invdisk</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>inv01</servlet-name>
+    <servlet-name>invdisk</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   <description>Database</description>
   <resource-ref>
     <description>Database Connection</description>
-    <res-ref-name>jdbc/inv01</res-ref-name>
+    <res-ref-name>jdbc/invdisk</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
@@ -35,8 +35,8 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-		classpath:org/friendlytutor/inv01/config/dao-context.xml
-		classpath:org/friendlytutor/inv01/config/security-context.xml
+		classpath:org/bvb4ever/invdisk/config/dao-context.xml
+		classpath:org/bvb4ever/invdisk/config/security-context.xml
 	</param-value>
   </context-param>
   <context-param>

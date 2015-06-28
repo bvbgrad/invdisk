@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="offers")
+@Table(name="offer")
 public class Offer {
 
 	@Id

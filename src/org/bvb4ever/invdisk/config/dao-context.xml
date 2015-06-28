@@ -34,7 +34,7 @@
 		</bean>
 
 	<beans profile="production">
-		<jee:jndi-lookup jndi-name="jdbc/inv01" id="dataSource"
+		<jee:jndi-lookup jndi-name="jdbc/invdisk" id="dataSource"
 			expected-type="javax.sql.DataSource">
 		</jee:jndi-lookup>
 		<bean id="transactionManager"
